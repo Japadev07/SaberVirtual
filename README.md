@@ -4,9 +4,9 @@ acompanhamento do progresso.
 
 ## Funcionalidades Principais
 
-### Cadastro de Usuários:
+### Cadastro de Alunos:
 
-Usuários podem se registrar no sistema e escolher entre três perfis diferentes:
+Alunos podem se registrar no sistema e acompanhar todo o progresso do curso no qual o mesmo está matriculado:
 - Participante: Pode visualizar eventos disponíveis e se inscrever.
 - Palestrante: Pode ser associado a eventos e visualizar suas palestras.
 - Administrador: Possui acesso total ao sistema, podendo criar, editar e excluir eventos, além de gerenciar usuários e suas permissões.
