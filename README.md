@@ -1,4 +1,4 @@
-# UbEventos
+# Plataforma de Cursos Online
 UbEventos é um sistema de controle de eventos desenvolvido para facilitar a gestão de eventos acadêmicos na universidade. O sistema permite o cadastro de usuários, que podem atuar em diferentes perfis, como participante, palestrante e administrador.
 
 ## Funcionalidades Principais
