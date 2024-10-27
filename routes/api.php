@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\ModuloController;
+use App\Http\Controllers\AulaController;
+use App\Http\Controllers\InscricaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    
 });
+
+Route::apiResource('cursos', CursoController::class);
+    Route::get('modulos/{curso}', [ModuloController::class, 'index']);
+    Route::apiResource('modulos', ModuloController::class)->except(['index']);
+    Route::get('aulas/{modulo}', [AulaController::class, 'index']);
+    Route::apiResource('aulas', AulaController::class)->except(['index']);
+    Route::get('inscricoes', [InscricaoController::class, 'index']);
+    Route::post('inscricoes', [InscricaoController::class, 'store']);
+    Route::delete('inscricoes/{id}', [InscricaoController::class, 'destroy']);

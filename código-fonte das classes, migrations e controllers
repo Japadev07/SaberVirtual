@@ -1,79 +1,5 @@
-// Model: Curso.php
-namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
 
-class Curso extends Model {
-    protected $fillable = ['titulo', 'descricao', 'data_inicio', 'data_fim', 'carga_horaria'];
-}
 
-// Model: Usuario.php
-namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
-
-class Usuario extends Model {
-    protected $fillable = ['nome', 'email', 'senha'];
-}
-
-// Migration: create_cursos_table.php
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-class CreateCursosTable extends Migration {
-    public function up() {
-        Schema::create('cursos', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->text('descricao');
-            $table->date('data_inicio');
-            $table->date('data_fim');
-            $table->integer('carga_horaria');
-            $table->timestamps();
-        });
-    }
-
-    public function down() {
-        Schema::dropIfExists('cursos');
-    }
-}
-
-// Migration: create_usuarios_table.php
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-class CreateUsuariosTable extends Migration {
-    public function up() {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->string('email')->unique();
-            $table->string('senha');
-            $table->timestamps();
-        });
-    }
-
-    public function down() {
-        Schema::dropIfExists('usuarios');
-    }
-}
-
-// Controller: CursoController.php
-namespace App\Http\Controllers;
-use App\Models\Curso;
-use Illuminate\Http\Request;
-
-class CursoController extends Controller {
-    public function index() { return Curso::all(); }
-    public function store(Request $request) { return Curso::create($request->all()); }
-    public function show($id) { return Curso::findOrFail($id); }
-    public function update(Request $request, $id) { 
-        $curso = Curso::findOrFail($id); 
-        $curso->update($request->all()); 
-        return $curso; 
-    }
-    public function destroy($id) { Curso::destroy($id); }
-}
 
 // Controller: UsuarioController.php
 namespace App\Http\Controllers;
@@ -93,8 +19,7 @@ class UsuarioController extends Controller {
 }
 
 // Rotas: routes/api.php
-use App\Http\Controllers\CursoController;
-use App\Http\Controllers\UsuarioController;
 
-Route::resource('cursos', CursoController::class);
+
+
 Route::resource('usuarios', UsuarioController::class);
